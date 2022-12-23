@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { Observable, of } from 'rxjs';
 import { Task } from 'src/Task';
 import { TASKS } from 'src/mock-tasks';
 
@@ -9,7 +11,8 @@ export class TaskService {
 
   constructor() { }
 
-  getTask(): Task[] {
-    return TASKS
+  getTask(): Observable<Task[]> {
+    const tasks = of(TASKS)
+    return tasks
   }
 }
