@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from 'src/Task';
 import { TaskService } from 'src/app/servies/task.service';
-// import { TASKS } from 'src/mock-tasks';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-tasks',
@@ -25,6 +25,11 @@ export class TasksComponent implements OnInit{
       .subscribe(() => {
         this.tasks = this.tasks.filter(t => t.id !== task.id)
     })
+  }
+
+  toggleReminder(task: Task) {
+    task.reminder = !task.reminder
+    this.taskService.udateTaskReminder(task).subscribe()
   }
 
 }
